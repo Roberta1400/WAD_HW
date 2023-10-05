@@ -41,24 +41,60 @@ body{
     font-size: x-large;
     text-decoration: none;
     color:#e7eaf6;
-    padding: 42px;
+    padding: 44px;
 }
 
 .navbar a:hover {
     background-color: #113f67;
   }
-.div {
-    
-    display: flex;
-    justify-content: row;
-    justify-content: space-around;
+div{
+    display:flex;
 }
-.div div{
-    margin: 50px;
-    padding: 200px 150px 200px 150px;
+.div {
+    justify-content: space-around;
+    margin-top:20px;
+    margin-bottom:20px;
+}
+.posts{
+    width:50%;
+    flex-direction:column;
+}
+.postHeader{
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom:20px;
+}
+
+.ipost{
+    flex-direction: column;
+    margin: 20px;
+    padding: 50px;
     background-color: #38598b;
     border-radius: 25px;
 }
+.ipost h4, p{
+    color:#e7eaf6;
+    font-size: larger;
+}
+.ipost img{
+    width:auto;
+}
+#like_icon{
+    margin-top:20px;
+    width:30px;
+}
+
+.sidebar1{
+    width:20%;
+    background-color: #38598b;
+    border-radius: 25px;
+}
+.sidebar2{
+    width:20%;
+    background-color: #38598b;
+    border-radius: 25px;
+}
+
 
 .container {
     display: flex;
@@ -68,6 +104,7 @@ body{
 }
 
 .post {
+    flex-direction: column;
     margin: 50px;
     padding: 50px;
     background-color: #38598b;
@@ -125,9 +162,27 @@ button#postbutton{
 
 footer{
     display:flex;
-    justify-content: center;
+    flex-direction: column;
+    text-align: center;
     background-color: #38598b;
     border-radius: 25px;
     padding: 40px;
     margin: 10px;
+}
+
+footer a{
+    text-decoration: none;
+    color:#a2a8d3;
+    font-size: large;
+    padding: 5px;
+}
+
+footer p{
+    color:#a2a8d3;
+    font-size:smaller;
+    padding-top:20px;
+}
+
+footer a:hover{
+    color:#113f67
 }
