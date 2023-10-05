@@ -1,1 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="res/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <a href="index.html">HOME</a>
+        </nav>
+        <a href="login.html"><img id="user_icon" src="res/images/user.png"></a>
+    </header>
+    <div class="container">
+        <div class="post login-container">
+            <h1>Welcome to Post It</h1>
+            <a href="#" class="create-account">Create an account</a>
+            <p>or</p>
+            <p>Please log in</p>
+            <form id="loginForm">
+                <div class="input-group">
+                    <input type="email" id="email" name="email" required placeholder="Email">
+                </div>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" required placeholder="Password">
+                </div>
+                <div class="postbutton-container">
+                    <button id="loginButton">Log in</button>
+                </div>
+            </form>
+            <a href="#" class="forget-password">Forget password</a>
+        </div>
+    </div>
+    
 
+    <script>
+        document.getElementById("loginButton").addEventListener("click", function () {
+            // Get the values of the Email and Password fields
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+    
+            // Check if both fields are filled
+            if (email.trim() !== "" && password.trim() !== "") {
+                // Redirect to index.html
+                window.location.href = "index.html";
+            } else {
+                // Display an error message if either field is empty
+                alert("Please fill in both Email and Password fields.");
+            }
+        });
+    </script>
+    
+</body>
+</html>
