@@ -144,6 +144,14 @@ textarea {
     margin-top: 60px; 
 }
 
+.postbutton-container + p{
+    font-style: italic;
+}
+
+.filebutton-container ~ p{
+    font-size: smaller;
+}
+
 button#fileButton{
     padding: 5px 10px;
     background-color: #e7eaf6;
