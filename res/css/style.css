@@ -47,6 +47,44 @@ body{
 .navbar a:hover {
     background-color: #113f67;
   }
+
+  .dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+#imageButton {
+    width: 70px;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display:none;
+    position: absolute;
+    background-color: #113f67; 
+    min-width: 250px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    right:0;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 15px;
+    text-decoration: none;
+    font-size: larger;
+    color: #e7eaf6;
+}
+
+.dropdown-content #logout:hover {
+    background-color: #1c4971;
+    border-radius: 20px;
+}
+
+.show {
+    display: block;
+}
 div{
     display:flex;
 }

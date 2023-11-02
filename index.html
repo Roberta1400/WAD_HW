@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="res/css/style.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="src/js/script.js"></script>
     </head>
     <body>
         <header class="header">
@@ -12,7 +13,14 @@
                 <a href="index.html">HOME</a>
                 <a href="addPost.html">ADD POST</a>
             </nav>
-            <a href = "login.html"><img id ="user_icon" src="/res/images/user.png"></a>
+            <div class="dropdown">
+                <img id="imageButton" src="/res/images/user.png" alt="User Icon">
+                <div class="dropdown-content" id="myDropdown">
+                    <a href="#">John Doe</a>
+                    <a href="#">john.doe@ut.ee</a>
+                    <a href="#" id="logout">Log Out</a>
+                </div>
+            </div>
         </header>
         <div class = "div">
             <div class="sidebar1">
