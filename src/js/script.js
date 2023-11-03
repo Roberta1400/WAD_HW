@@ -2,12 +2,10 @@ document.addEventListener("DOMContentLoaded", function () {
     var imageButton = document.getElementById("imageButton");
     var dropdownContent = document.getElementById("myDropdown");
 
-    // Toggle the dropdown when the image button is clicked
     imageButton.addEventListener("click", function(e) {
         dropdownContent.classList.toggle("show");
     });
 
-    // Close the dropdown when clicking outside
     window.addEventListener("click", function(event) {
         if (event.target !== imageButton && !dropdownContent.contains(event.target)) {
             dropdownContent.classList.remove("show");
@@ -38,9 +36,12 @@ req.onreadystatechange = () => {
                     const postHeader = document.createElement('div');
                     postHeader.classList.add('postHeader');
 
+                    const userDiv = document.createElement('div');
+                    postHeader.classList.add('userDiv');
+
                     const likes = document.createElement('div');
                     likes.classList.add('likes');
-    
+                    
                     const userIcon = document.createElement('img');
                     userIcon.classList.add('user_icon');
                     userIcon.src = postData.user_icon;
@@ -61,9 +62,6 @@ req.onreadystatechange = () => {
                     postTitle.classList.add('title');
                     postTitle.textContent = postData.postTitle;
     
-                    postHeader.appendChild(userIcon);
-                    postHeader.appendChild(postDate);
-    
                     const postBody = document.createElement('p');
                     postBody.classList.add('body');
                     postBody.textContent = postData.postText;
@@ -77,8 +75,9 @@ req.onreadystatechange = () => {
                     if (postData.postImg) {
                         postImage.src = postData.postImg;
                     }
-                    
-                    postHeader.appendChild(postAuthor);
+                    userDiv.appendChild(userIcon);
+                    userDiv.appendChild(postAuthor);
+                    postHeader.appendChild(userDiv);
                     postHeader.appendChild(postDate);
                     postElement.appendChild(postHeader);
                     postElement.appendChild(postTitle);

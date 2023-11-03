@@ -116,6 +116,9 @@ div{
     justify-content: space-between;
     padding-bottom:20px;
 }
+.userDiv .user{
+   padding-top:10px;
+}
 
 .ipost{
     flex-direction: column;
@@ -149,12 +152,13 @@ div{
 .ipost img{
     width:auto;
     padding: 10px;
+    border-radius:10%;
 }
-.likes .like_icon{
-    margin-top:20px;
-    width:50px;
-    padding: 0px;
+.likes{
+    display:flex;
+    justify-content: space-between;
 }
+
 
 .sidebar1{
     width:20%;
