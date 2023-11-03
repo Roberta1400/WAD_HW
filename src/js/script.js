@@ -15,78 +15,88 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-//const binID = '6543ea6354105e766fca8c48';
-//const binVersion = 'latest';
-//const apiKey = '$2a$10$96ItLli6GmLKcQ79hYBX..Sp6qKE9jKKT8VacpSidqrZVp2BC.yNC';
+const binID = '6543ea6354105e766fca8c48';
+const binVersion = 'latest';
+const apiKey = '$2a$10$96ItLli6GmLKcQ79hYBX..Sp6qKE9jKKT8VacpSidqrZVp2BC.yNC';
 
-//const jsonBinURL = `https://api.jsonbin.io/v3/b/${binID}/${binVersion}`;
-//
-//const req = new XMLHttpRequest();
-//
-//req.onreadystatechange = () => {
-//    if (req.readyState == XMLHttpRequest.DONE) {
-//            if (req.status === 200) {
-//                console.log(JSON.parse(req.responseText));
-//                //TODO: use such information to dynamically create the webpage shown in Figure 1
-//            } else {
-//                console.error('Failed to fetch JSON data. Status:', req.status);
-//            }
-//         }
-//};
-//
-//req.open('GET', jsonBinURL, true);
-//req.setRequestHeader('X-Master-Key', apiKey);
-//req.send();
+const jsonBinURL = `https://api.jsonbin.io/v3/b/${binID}/${binVersion}`;
+
+const req = new XMLHttpRequest();
 
 window.onload = function() {
+req.onreadystatechange = () => {
+    if (req.readyState == XMLHttpRequest.DONE) {
+            if (req.status === 200) {
+                const data = JSON.parse(req.responseText);
+                
+                for (const postData of data.record) {
+                    const postContainer = document.querySelector('.posts');
 
-    fetch('res/json/my.json')
-        .then((response) => response.json())
-        .then(json => {
-            console.log(json);
-            for (const element of json){
-                let postDiv = document.createElement("div");
-                postDiv.className = "post";
-                let h3 = document.createElement("h3");
-                h3.textContent = element.postTitle;
-                let postDate = document.createElement("p");
-                postDate.textContent = element.postDate;
-                let postAuthor = document.createElement("p");
-                postAuthor.textContent = "Author: " + element.postAuthor;
-                let p = document.createElement("p");
-                p.textContent = element.postText;
-                let postImg = document.createElement("img");
-                postImg.src = element.postImg;
-                let userIcon = document.createElement("img");
-                userIcon.src = element.user_icon;
-                userIcon.className = "icon";
-                let likeIcon = document.createElement("img");
-                likeIcon.src = element.like_icon;
-                likeIcon.className = "icon";
-                let postLikes = document.createElement("p");
-                postLikes.textContent = "Likes: " + element.postLikes;
+                    const postElement = document.createElement('div');
+                    postElement.classList.add('ipost');
+    
+                    const postHeader = document.createElement('div');
+                    postHeader.classList.add('postHeader');
 
-                postDiv.appendChild(h3);
-                postDiv.appendChild(postDate);
-                postDiv.appendChild(postAuthor);
-                postDiv.appendChild(p);
-                postDiv.appendChild(postImg);
-                postDiv.appendChild(userIcon);
-                postDiv.appendChild(likeIcon);
-                postDiv.appendChild(postLikes);
-                document.body.append(postDiv);
+                    const likes = document.createElement('div');
+                    likes.classList.add('likes');
+    
+                    const userIcon = document.createElement('img');
+                    userIcon.classList.add('user_icon');
+                    userIcon.src = postData.user_icon;
+
+                    const likeIcon = document.createElement('img');
+                    likeIcon.classList.add('like_icon');
+                    likeIcon.src = postData.like_icon;
+    
+                    const postDate = document.createElement('h4');
+                    postDate.classList.add('date');
+                    postDate.textContent = postData.postDate;
+
+                    const postAuthor = document.createElement('h4');
+                    postAuthor.classList.add('user');
+                    postAuthor.textContent = postData.postAuthor;
+
+                    const postTitle = document.createElement('h4');
+                    postTitle.classList.add('title');
+                    postTitle.textContent = postData.postTitle;
+    
+                    postHeader.appendChild(userIcon);
+                    postHeader.appendChild(postDate);
+    
+                    const postBody = document.createElement('p');
+                    postBody.classList.add('body');
+                    postBody.textContent = postData.postText;
+
+                    const postLikes = document.createElement('p');
+                    postLikes.classList.add('like');
+                    postLikes.textContent = postData.postLikes;
+    
+                    const postImage = document.createElement('img');
+                    postImage.classList.add('img');
+                    if (postData.postImg) {
+                        postImage.src = postData.postImg;
+                    }
+                    
+                    postHeader.appendChild(postAuthor);
+                    postHeader.appendChild(postDate);
+                    postElement.appendChild(postHeader);
+                    postElement.appendChild(postTitle);
+                    postElement.appendChild(postBody);
+                    postElement.appendChild(postImage);
+                    likes.appendChild(likeIcon);
+                    likes.appendChild(postLikes);
+                    postElement.appendChild(likes)
+                    
+    
+                   postContainer.append(postElement);
+                }
+           } else {
+                console.error('Failed to fetch JSON data. Status:', req.status);
             }
-        })
-        .catch(err => {
-            let errDiv = document.createElement("div");
-            errDiv.className = 'post';
-            errDiv.innerText = err;
-            document.body.appendChild(errDiv);
-            })
-        .finally(() => {
-            let footer = document.createElement("footer");
-            date = new Date().toLocaleString()
-            footer.innerText = date;
-            document.body.appendChild(footer);
-            })
-}
+         }
+}};
+
+req.open('GET', jsonBinURL, true);
+req.setRequestHeader('X-Master-Key', apiKey);
+req.send();

@@ -33,8 +33,22 @@ body{
     margin:10px;
     border-radius: 25px;
 }
-#user_icon{
-    width:70px;
+.postHeader .user_icon{
+    width:80px;
+}
+
+.postHeader .date{
+    font-size: large;
+}
+
+.postHeader .user{
+    font-size: large;
+}
+
+.likes{
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom:20px;
 }
 
 .navbar a{
@@ -110,17 +124,35 @@ div{
     background-color: #38598b;
     border-radius: 25px;
 }
+
+.ipost .title{
+    margin: 20px;
+    font-size: x-large;
+}
+
+.ipost .body{
+    color:#e7eaf6;
+    font-size: larger;
+}
+
+.ipost .like_icon .like{
+    align-items: center;
+    color:#e7eaf6;
+    font-size: large;
+}
+
 .ipost h4, p{
     color:#e7eaf6;
+    margin: 20px;
     font-size: larger;
 }
 .ipost img{
     width:auto;
     padding: 10px;
 }
-#like_icon{
+.likes .like_icon{
     margin-top:20px;
-    width:30px;
+    width:50px;
     padding: 0px;
 }
 
